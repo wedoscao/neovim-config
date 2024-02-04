@@ -3,6 +3,8 @@
     "runtime.version": "LuaJIT",
     "workspace.library": [
         " /home/wedoscao/.local/share/nvim/lazy/neodev.nvim/types/stable",
+        "/home/wedoscao/.local/share/nvim/lazy/plenary.nvim",
+        "/home/wedoscao/.local/share/nvim/lazy/workspaces.nvim/lua/workspaces",
         "/home/wedoscao/.config/nvim/lua",
         "/usr/share/nvim/runtime/lua"
     ]
