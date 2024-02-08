@@ -19,6 +19,7 @@ return {
 						"vimls",
 						"bashls",
 						"emmet_language_server",
+						"htmx",
 					},
 				})
 				require("mason-lspconfig").setup_handlers({
