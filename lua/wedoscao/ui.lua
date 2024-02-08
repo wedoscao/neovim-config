@@ -76,6 +76,6 @@ local function show_menu(what, callback, opts)
 end
 
 return {
-	show_input,
-	show_menu,
+	show_input = show_input,
+	show_menu = show_menu,
 }

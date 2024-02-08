@@ -7,11 +7,10 @@ local function get_workspace_names()
 	return workspace_names
 end
 
-local ui = require("wedoscao.ui")
-
 return {
 	"natecraddock/workspaces.nvim",
 	config = function()
+		local ui = require("wedoscao.ui")
 		local workspaces = require("workspaces")
 		workspaces.setup({})
 		vim.keymap.set("n", "<leader>wo", function()
