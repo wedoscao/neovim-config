@@ -94,7 +94,6 @@ return {
 				require("mason-null-ls").setup({
 					ensure_installed = {
 						"gofumpt",
-						"goimports",
 						"stylua",
 						"prettierd",
 						"sql-formatter",
