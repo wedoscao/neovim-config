@@ -20,6 +20,8 @@ return {
 						"bashls",
 						"emmet_language_server",
 						"htmx",
+						"gopls",
+						"pylsp",
 					},
 				})
 				require("mason-lspconfig").setup_handlers({
@@ -90,7 +92,16 @@ return {
 			priotiry = 999,
 			config = function()
 				require("mason-null-ls").setup({
-					ensure_installed = { "stylua", "prettierd", "sql-formatter", "rustfmt", "beautysh" },
+					ensure_installed = {
+						"gofumpt",
+						"goimports",
+						"stylua",
+						"prettierd",
+						"sql-formatter",
+						"rustfmt",
+						"beautysh",
+						"black",
+					},
 					automatic_installation = false,
 					handlers = {},
 				})
