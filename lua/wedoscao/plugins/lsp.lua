@@ -12,7 +12,6 @@ return {
 						"tailwindcss",
 						"jsonls",
 						"cssls",
-						"taplo",
 						"html",
 						"marksman",
 						"sqlls",
