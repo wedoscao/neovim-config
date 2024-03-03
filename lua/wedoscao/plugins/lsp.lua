@@ -46,6 +46,11 @@ return {
 							},
 						})
 					end,
+					["bashls"] = function()
+						require("lspconfig").bashls.setup({
+							filetypes = { "sh", "zsh" },
+						})
+					end,
 				})
 			end,
 		},
@@ -97,8 +102,7 @@ return {
 						"stylua",
 						"prettierd",
 						"sql-formatter",
-						"rustfmt",
-						"beautysh",
+						"shfmt",
 						"black",
 					},
 					automatic_installation = false,
@@ -110,14 +114,18 @@ return {
 			"nvimtools/none-ls.nvim",
 			config = function()
 				local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-				require("null-ls").setup({
+				local null_ls = require("null-ls")
+				null_ls.setup({
 					sources = {
-						require("null-ls").builtins.formatting.prettierd.with({
+						null_ls.builtins.formatting.prettierd.with({
 							env = {
 								PRETTIERD_DEFAULT_CONFIG = vim.fn.expand(
 									vim.fn.stdpath("config") .. "/utils/.prettierrc.json"
 								),
 							},
+						}),
+						null_ls.builtins.formatting.shfmt.with({
+							filetypes = { "sh", "zsh" },
 						}),
 					},
 					-- you can reuse a shared lspconfig on_attach callback here
