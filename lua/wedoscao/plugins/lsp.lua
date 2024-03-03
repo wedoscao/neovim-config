@@ -32,17 +32,25 @@ return {
 						require("lspconfig")[server_name].setup({})
 					end,
 					["rust_analyzer"] = function()
-						require("rust-tools").setup({
-							server = {
-								settings = {
-									["rust-analyzer"] = {
-										checkOnSave = true,
-										check = {
-											command = "clippy",
-											features = "all",
-										},
-									},
-								},
+						vim.api.nvim_create_autocmd("BufEnter", {
+							callback = function(ev)
+								local bufnr = ev.buf
+								local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
+								local filename = vim.fn.expand("%:t")
+								if filename:sub(-#".rs") == ".rs" then
+									vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+									vim.api.nvim_create_autocmd("BufWritePre", {
+										group = augroup,
+										buffer = bufnr,
+										command = "RustFmt",
+									})
+								end
+							end,
+						})
+
+						require("lspconfig").rust_analyzer.setup({
+							checkOnSave = {
+								command = "clippy",
 							},
 						})
 					end,
@@ -84,10 +92,6 @@ return {
 		},
 
 		{
-			"simrat39/rust-tools.nvim",
-			config = function() end,
-		},
-		{
 			"folke/neodev.nvim",
 		},
 	},
@@ -113,7 +117,7 @@ return {
 		{
 			"nvimtools/none-ls.nvim",
 			config = function()
-				local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+				local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
 				local null_ls = require("null-ls")
 				null_ls.setup({
 					sources = {
