@@ -17,6 +17,7 @@ return {
 					"typescript",
 					"javascript",
 					"python",
+					"cmake",
 				},
 
 				-- Install parsers synchronously (only applied to `ensure_installed`)
