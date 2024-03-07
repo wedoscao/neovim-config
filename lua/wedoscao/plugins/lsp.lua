@@ -21,6 +21,7 @@ return {
 						"htmx",
 						"gopls",
 						"pylsp",
+						"clangd",
 					},
 				})
 				require("mason-lspconfig").setup_handlers({
