@@ -1,6 +1,12 @@
 return {
-	"nvim-lua/plenary.nvim",
-	"nvim-tree/nvim-web-devicons",
+	{ "nvim-lua/plenary.nvim", priority = 1000 },
+	{
+		"williamboman/mason.nvim",
+		priority = 1000,
+		config = function()
+			require("mason").setup({})
+		end,
+	},
 	{
 		"windwp/nvim-autopairs",
 		config = function()
