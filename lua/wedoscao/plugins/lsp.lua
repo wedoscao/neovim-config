@@ -32,7 +32,6 @@ return {
 						"pylsp",
 						"clangd",
 						"cmake",
-						"templ",
 					},
 				})
 				require("mason-lspconfig").setup_handlers({
