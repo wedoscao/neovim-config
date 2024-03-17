@@ -1,7 +1,16 @@
 return {
 	{
+		"williamboman/mason.nvim",
+		config = function()
+			require("mason").setup({})
+		end,
+	},
+	{
 		{
 			"williamboman/mason-lspconfig.nvim",
+			dependencies = {
+				"williamboman/mason.nvim",
+			},
 			priority = 999,
 			config = function()
 				require("mason-lspconfig").setup({
@@ -66,6 +75,9 @@ return {
 		},
 		{
 			"neovim/nvim-lspconfig",
+			dependencies = {
+				"williamboman/mason-lspconfig.nvim",
+			},
 			config = function()
 				vim.api.nvim_create_autocmd("LspAttach", {
 					group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -100,7 +112,9 @@ return {
 	{
 		{
 			"jay-babu/mason-null-ls.nvim",
-			priotiry = 999,
+			dependencies = {
+				"williamboman/mason.nvim",
+			},
 			config = function()
 				require("mason-null-ls").setup({
 					ensure_installed = {
@@ -119,6 +133,9 @@ return {
 		},
 		{
 			"nvimtools/none-ls.nvim",
+			dependencies = {
+				"jay-babu/mason-null-ls.nvim",
+			},
 			config = function()
 				local augroup = vim.api.nvim_create_augroup("LspFormatting", { clear = false })
 				local null_ls = require("null-ls")
