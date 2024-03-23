@@ -58,18 +58,11 @@ return {
 							end,
 						})
 
-						vim.g.rustaceanvim = {
-							tools = {},
-							server = {
-								on_attach = function(client, bufnr) end,
-								default_settings = {
-									["rust-analyzer"] = {
-										checkOnSave = "clippy",
-									},
-								},
+						require("lspconfig").rust_analyzer.setup({
+							checkOnSave = {
+								command = "clippy",
 							},
-							dap = {},
-						}
+						})
 					end,
 					["bashls"] = function()
 						require("lspconfig").bashls.setup({
@@ -113,11 +106,6 @@ return {
 
 		{
 			"folke/neodev.nvim",
-		},
-		{
-			"mrcjkb/rustaceanvim",
-			version = "^4", -- Recommended
-			ft = { "rust" },
 		},
 	},
 	{
