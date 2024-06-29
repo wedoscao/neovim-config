@@ -4,7 +4,12 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim", "nvim-web-devicons" },
 	config = function()
 		require("telescope").setup({
-			defaults = { file_ignore_patterns = { "%.png", "%.jpg", "%.jpeg", "%.gif", "%.webp" } },
+			defaults = { file_ignore_patterns = { "^.git/", "%.png", "%.jpg", "%.jpeg", "%.gif", "%.webp", "%.ico" } },
+			pickers = {
+				find_files = {
+					hidden = true,
+				},
+			},
 		})
 		local builtin = require("telescope.builtin")
 		vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
